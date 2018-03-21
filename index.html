@@ -12,14 +12,18 @@
 
     <title>SFPD Dispatch</title>
   </head>
+  <script>
+    AOS.init({
+    offset: 200,
+    duration: 600,
+    easing: 'ease-in-sine',
+    delay: 100,});
+    $(function() {
+      AOS.init();
+    });
+  </script>
   <body>
-    <script>
-      AOS.init({
-      offset: 200,
-      duration: 600,
-      easing: 'ease-in-sine',
-      delay: 100,});
-    </script>
+
 
     <div data-aos="fade">
       <h1>San Francisco</h1>
