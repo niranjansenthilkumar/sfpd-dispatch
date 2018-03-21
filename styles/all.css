@@ -1,0 +1,13 @@
+@font-face {
+font-family:"Lobster Two";
+src: url("../fonts/Muli/Muli-Light.ttf");
+}
+
+body {
+  font-family: 'Lobster Two', cursive!important;
+  text-align: center;
+}
+
+h1{
+  font-size: 70px;
+}
