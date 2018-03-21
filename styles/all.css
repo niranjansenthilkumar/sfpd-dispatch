@@ -1,13 +1,27 @@
 @font-face {
-font-family:"Lobster Two";
+font-family:"Muli";
 src: url("../fonts/Muli/Muli-Light.ttf");
 }
 
 body {
-  font-family: 'Lobster Two', cursive!important;
+  font-family: 'Muli', cursive!important;
   text-align: center;
+  margin-left: 240px;
+  margin-right: 240px;
 }
 
 h1{
-  font-size: 70px;
+  font-family: 'Muli', cursive!important;
+  font-size: 35px;
+}
+
+p {
+  font-size: 20px;
+  text-align: justify;
+  line-height: 200%;
+}
+
+
+#sanfran{
+  width: 25%;
 }
