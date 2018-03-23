@@ -26,87 +26,8 @@
       delay: 100,});
     </script>
 
-    <script>
-    d3.csv("/data/sfpd_dispatch_data_subset.csv", function(data) {
-      console.log(data);
+    <script type='text/javascript' src='src/analysis.js'></script>
 
-      var minLand = d3.extent(data, function(d) { return d.number_of_alarms; });
-      console.log(minLand);
-
-      var large_land = data.filter(function(d) { return d.station_area == 10; });
-      console.log(large_land);
-
-
-
-      var timedifferences = [];
-      data.forEach(function(d) {
-        var date1 = moment(d.entry_timestamp);
-        var date2 = moment(d.received_timestamp);
-
-        differenceInMs = date2.diff(date1); // diff yields milliseconds
-        duration = moment.duration(differenceInMs); // moment.duration accepts ms
-        differenceInMinutes = duration.asMinutes(); // if you would like to have the output 559
-        differenceInSeconds = duration.asSeconds(); //seconds
-
-        if (differenceInSeconds != 0){
-          differenceInSeconds = differenceInSeconds * -1;
-
-        }
-
-        var date3 = moment(d.dispatch_timestamp);
-        dispatchMs = date3.diff(date2);
-        dispatchTime = moment.duration(dispatchMs);
-        dispatchSeconds = dispatchTime.asSeconds();
-
-        var total = differenceInSeconds + dispatchSeconds;
-
-        timedifferences.push(total);
-      });
-
-      var medicalcount = 0;
-      var alarmcount = 0;
-      var firecount = 0;
-      var hazardcount = 0;
-      var trafficcount = 0;
-      var othercount = 0;
-      var other = [];
-      data.forEach(function(d) {
-        if(d.call_type == "Medical Incident"){
-          medicalcount += 1;
-        }
-        else if(d.call_type == "Alarms"){
-          alarmcount += 1;
-        }
-        else if(d.call_type == "Structure Fire" || d.call_type == "Outside Fire" || d.call_type == "Vehicle Fire"){
-          firecount += 1;
-        }
-        else if(d.call_type == "Other" || d.call_type == "Citizen Assist / Service Call" || d.call_type == "Elevator / Escalator Rescue"){
-          othercount += 1;
-        }
-        else if(d.call_type == "Traffic Collision"){
-          trafficcount += 1;
-        }
-        else{
-          hazardcount += 1;
-        }
-      });
-
-      var call_type = [];
-      call_type.push(medicalcount);
-      call_type.push(alarmcount);
-      call_type.push(firecount);
-      call_type.push(trafficcount);
-      call_type.push(hazardcount);
-      call_type.push(othercount);
-
-      console.log(timedifferences);
-      console.log(call_type);
-
-    });
-
-
-
-    </script>
 
       <img data-aos="fade" id="sanfran" alt="San Francisco" src="images/sanfran.png" />
       <h1 data-aos="fade" data-aos-delay="700">
