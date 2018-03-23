@@ -4,14 +4,14 @@ src: url("../fonts/Muli/Muli-Light.ttf");
 }
 
 body {
-  font-family: 'Muli', cursive!important;
+  font-family: 'Muli', sans-serif!important;
   text-align: center;
   margin-left: 240px;
   margin-right: 240px;
 }
 
 h1{
-  font-family: 'Muli', cursive!important;
+  font-family: 'Muli', sans-serif!important;
   font-size: 35px;
 }
 
