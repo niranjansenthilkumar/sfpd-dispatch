@@ -27,3 +27,22 @@ Other:
 * Other
 * Citizen Assist / Service Call
 * Elevator / Escalator Rescue
+
+######UNIT TYPE
+* MEDIC
+
+* ENGINE
+
+* CHIEF
+
+* PRIVATE
+
+* RESCUE SQUAD
+* RESCUE CAPTAIN
+
+* TRUCK
+
+
+Other
+* SUPPORT
+* INVESTIGATION
