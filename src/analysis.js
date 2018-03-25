@@ -11,9 +11,11 @@
     var alsCount = [0, 0];
 
     //empty array for unit dispatch
-    var unitTotalTime = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    var unitCount = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var unitTotalTime = [0, 0, 0, 0, 0, 0];
+    var unitCount = [0, 0, 0, 0, 0, 0];
 
+    var hospitalTotalTime = [0, 0];
+    var hospitalCount = [0, 0];
 
     var time = [];
     data.forEach(function(d) {
@@ -24,35 +26,45 @@
       var date4 = moment(d.response_timestamp);
       var date5 = moment(d.on_scene_timestamp);
 
+      var date6 = moment(d.transport_timestamp);
+      var date7 = moment(d.hospital_timestamp);
+
       //calculates total dispatch time for each record
       var total = timeCalculation(date1, date2, date3);
 
       var responseTotal = responseTimeCalculation(date4, date5);
+      var hospitalTotal = responseTimeCalculation(date6, date7);
 
       //enumerates values into each call type array
       callTimeTotalCount(d.call_type, totalTime, count, total);
 
       //enumerates values based on if call type was life threatening or not
       alsTimeTotalCount(d.call_type_group, alsTotalTime, alsCount, total);
+      alsTimeTotalCount(d.call_type_group, hospitalTotalTime, hospitalCount, hospitalTotal);
 
+      //enumerates values based on if unit type
       unitTimeTotalCount(d.unit_type, unitTotalTime, unitCount, responseTotal);
 
-      time.push(responseTotal);
+      time.push(hospitalTotal);
 
 
     });
     avgTime = [];
     avgTimeCalculation(totalTime, count, avgTime);
-    avgTimeALS = []
+    avgTimeALS = [];
     avgTimeCalculation(alsTotalTime, alsCount, avgTimeALS);
-
+    avgTimeUnit = [];
+    avgTimeCalculation(unitTotalTime, unitCount, avgTimeUnit);
+    avgTimeHospital = [];
+    avgTimeCalculation(hospitalTotalTime, hospitalCount, avgTimeHospital);
 
     // console.log(count);
     // console.log(totalTime);
     console.log(avgTime);
     console.log(avgTimeALS);
     console.log(time);
-    console.log(unitCount);
+    console.log(avgTimeUnit);
+    console.log(avgTimeHospital);
   });
 }());
 
@@ -130,6 +142,7 @@ function callTimeTotalCount(callType, totalTime, count, total){
 
 //if selector that determines where value in array goes based on if parameter was Life Threatening
 function alsTimeTotalCount(callType, totalTime, count, total){
+  if(!isNaN(total)){
   if(callType == "Non Life-threatening"){
     totalTime[0] += total;
     count[0] += 1;
@@ -137,18 +150,17 @@ function alsTimeTotalCount(callType, totalTime, count, total){
   else if(callType == "Potentially Life-Threatening"){
     totalTime[1] += total;
     count[1] += 1;
-  }
+  }}
 }
-
-
 
 //if selector that determines where value in array goes based on unit_type parameter
 function unitTimeTotalCount(unit, totalTime, count, total){
+  if(!isNaN(total)){
   if(unit == "MEDIC"){
     totalTime[0] += total;
     count[0] += 1;
   }
-  else if(unit == "ENGINE"){
+  else if(unit == "ENGINE" || unit == "TRUCK"){
     totalTime[1] += total;
     count[1] += 1;
   }
@@ -160,23 +172,12 @@ function unitTimeTotalCount(unit, totalTime, count, total){
     totalTime[3] += total;
     count[3] += 1;
   }
-  else if(unit == "RESCUE SQUAD"){
+  else if(unit == "RESCUE SQUAD" || unit == "RESCUE CAPTAIN"){
     totalTime[4] += total;
     count[4] += 1;
   }
-  else if(unit == "TRUCK"){
+  //Other: SUPPORT AND INVESTIGATION
+  else{
     totalTime[5] += total;
     count[5] += 1;
-  }
-  else if(unit == "SUPPORT"){
-    totalTime[6] += total;
-    count[6] += 1;
-  }
-  else if(unit == "RESCUE CAPTAIN"){
-    totalTime[7] += total;
-    count[7] += 1;
-  }
-  else if(unit == "INVESTIGATION"){
-    count[8] += 1;
-  }
-}
+  }}}

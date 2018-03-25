@@ -29,20 +29,23 @@ Other:
 * Elevator / Escalator Rescue
 
 ######UNIT TYPE
+Medical
 * MEDIC
 
+Fire
 * ENGINE
+* TRUCK
 
+Chief:
 * CHIEF
 
+Private
 * PRIVATE
 
+Rescue:
 * RESCUE SQUAD
 * RESCUE CAPTAIN
 
-* TRUCK
-
-
-Other
+Other:
 * SUPPORT
 * INVESTIGATION
