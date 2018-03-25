@@ -14,8 +14,12 @@
     var unitTotalTime = [0, 0, 0, 0, 0, 0];
     var unitCount = [0, 0, 0, 0, 0, 0];
 
+    //empty array for hospitalTime
     var hospitalTotalTime = [0, 0];
     var hospitalCount = [0, 0];
+
+    var batallionTotalTime = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var batallionCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     var time = [];
     data.forEach(function(d) {
@@ -45,6 +49,8 @@
       //enumerates values based on if unit type
       unitTimeTotalCount(d.unit_type, unitTotalTime, unitCount, responseTotal);
 
+      battalionTimeTotalCount(d.battalion, batallionTotalTime, batallionCount, responseTotal);
+
       time.push(hospitalTotal);
 
 
@@ -57,14 +63,16 @@
     avgTimeCalculation(unitTotalTime, unitCount, avgTimeUnit);
     avgTimeHospital = [];
     avgTimeCalculation(hospitalTotalTime, hospitalCount, avgTimeHospital);
+    avgTimeBattalion = [];
+    avgTimeCalculation(batallionTotalTime, batallionCount, avgTimeBattalion);
 
     // console.log(count);
     // console.log(totalTime);
     console.log(avgTime);
     console.log(avgTimeALS);
-    console.log(time);
     console.log(avgTimeUnit);
     console.log(avgTimeHospital);
+    console.log(avgTimeBattalion);
   });
 }());
 
@@ -181,3 +189,56 @@ function unitTimeTotalCount(unit, totalTime, count, total){
     totalTime[5] += total;
     count[5] += 1;
   }}}
+
+  //if selector that determines where value in array goes based on battalion unit
+function battalionTimeTotalCount(unit, totalTime, count, total){
+    if(!isNaN(total)){
+    if(unit == "B01"){
+      totalTime[0] += total;
+      count[0] += 1;
+    }
+    else if(unit == "B02"){
+      totalTime[1] += total;
+      count[1] += 1;
+    }
+    else if(unit == "B03"){
+      totalTime[2] += total;
+      count[2] += 1;
+    }
+    else if(unit == "B04"){
+      totalTime[3] += total;
+      count[3] += 1;
+    }
+    else if(unit == "B05"){
+      totalTime[4] += total;
+      count[4] += 1;
+    }
+    else if(unit == "B06"){
+      totalTime[5] += total;
+      count[5] += 1;
+    }
+    else if(unit == "B07"){
+      totalTime[6] += total;
+      count[6] += 1;
+    }
+    else if(unit == "B08"){
+      totalTime[7] += total;
+      count[7] += 1;
+    }
+    else if(unit == "B09"){
+      totalTime[8] += total;
+      count[8] += 1;
+    }
+    else if(unit == "B10"){
+      totalTime[9] += total;
+      count[9] += 1;
+    }
+    else if(unit == "B11"){
+      totalTime[10] += total;
+      count[10] += 1;
+    }
+    //Other: B99
+    else{
+      totalTime[10] += total;
+      count[10] += 1;
+    }}}
