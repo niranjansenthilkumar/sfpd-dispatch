@@ -90,22 +90,41 @@
         <script type='text/javascript' src='src/map.js'></script>
 
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyLhg0ikDSb_BEHQUy19lSXFqQym6Goa8&callback=myMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyLhg0ikDSb_BEHQUy19lSXFqQym6Goa8&callback=myMap"async defer ></script>
 
         <form id="choices" action="javascript:return false;">
-            <h2>Attributes</h2>
-            <input type="radio" name="Accident" value="lateNightYes" id="lateNightYes"> Late Night (12:00AM-3:59AM):
+            <h2>Time</h2>
+
           </br></br>
-            <input type="radio" name="Accident" value="earlyMorningYes" id="earlyMorningYes"> Early Morning (4:00AM-7:59AM):
+
+            <input type="radio" name="time" value="lateNightYes" id="lateNightYes"> Late Night (12:00AM-3:59AM)
           </br></br>
-            <input type="radio" name="Accident" value="morningYes" id="morningYes"> Morning (8:00AM-11:59AM):
+            <input type="radio" name="time" value="earlyMorningYes" id="earlyMorningYes"> Early Morning (4:00AM-7:59AM)
           </br></br>
-            <input type="radio" name="Accident" value="afternoonYes" id="afternoonYes"> Afternoon (12:00PM-3:59PM):
+            <input type="radio" name="time" value="morningYes" id="morningYes"> Morning (8:00AM-11:59AM)
           </br></br>
-            <input type="radio" name="Accident" value="eveningYes" id="eveningYes"> Evening (4:00PM-7:59PM):
+            <input type="radio" name="time" value="afternoonYes" id="afternoonYes"> Afternoon (12:00PM-3:59PM)
           </br></br>
-            <input type="radio" name="Accident" value="nightYes" id="nightYes"> Night (8:00PM-11:59PM):
+            <input type="radio" name="time" value="eveningYes" id="eveningYes"> Evening (4:00PM-7:59PM)
           </br></br>
+            <input type="radio" name="time" value="nightYes" id="nightYes"> Night (8:00PM-11:59PM)
+          </br></br>
+
+          <h2>Unit Type</h2>
+
+        </br></br>
+
+          <input type="radio" name="unit" value="medicalYes" id="medicalYes"> Medical
+        </br></br>
+          <input type="radio" name="unit" value="fireYes" id="fireYes"> Fire
+        </br></br>
+          <input type="radio" name="unit" value="chiefYes" id="chiefYes"> Chief
+        </br></br>
+          <input type="radio" name="unit" value="privateYes" id="privateYes"> Private
+        </br></br>
+          <input type="radio" name="unit" value="rescueYes" id="rescueYes"> Rescue
+        </br></br>
+
             <button id="showAll">reset</button>
         </form>
 

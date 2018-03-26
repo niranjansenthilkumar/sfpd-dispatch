@@ -30,17 +30,17 @@ Other:
 * Elevator / Escalator Rescue
 
 ######UNIT TYPE##########
-Medical
+Medical:
 * MEDIC
 
-Fire
+Fire:
 * ENGINE
 * TRUCK
 
 Chief:
 * CHIEF
 
-Private
+Private:
 * PRIVATE
 
 Rescue:
