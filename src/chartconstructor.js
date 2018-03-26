@@ -38,7 +38,7 @@ var myChart = new Chart(ctx, {
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: 'response time (minutes)'
+                  labelString: 'dispatch time (minutes)'
                 }
             }]
         },
@@ -169,7 +169,7 @@ var unitTimeChart = new Chart(ctx, {
         xAxes: [{
             scaleLabel: {
               display: true,
-              labelString: 'call type priority'
+              labelString: 'unit type'
             }
         }],
           yAxes: [{
@@ -226,7 +226,7 @@ var batTimeChart = new Chart(ctx, {
         xAxes: [{
             scaleLabel: {
               display: true,
-              labelString: 'call type priority'
+              labelString: 'batallion'
             }
         }],
           yAxes: [{
