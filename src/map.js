@@ -405,15 +405,6 @@ function initListeners() {
               }
               setMarkersByTimeAndUnit(map, time, time+3, "RESCUE CAPTAIN");
           });
-  document.getElementById("otherYes").addEventListener("click", function() {
-              resetAttribute("unit");
-              attributesChecked.unit.otherYes = true;
-              setOnMap();
-              if(time == "ALL"){
-                setMarkersByUnit(map, "SUPPORT");
-              }
-              setMarkersByTimeAndUnit(map, time, time+3, "SUPPORT");
-          });
 }
 
 //clear map

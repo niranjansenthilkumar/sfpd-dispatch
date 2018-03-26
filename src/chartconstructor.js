@@ -1,3 +1,4 @@
+$(document).ready(function(){
 var ctx = document.getElementById('myChart').getContext('2d');
 
 var time = [4.4, 4, 5.5, 5.3, 3.2]
@@ -253,3 +254,5 @@ var batTimeChart = new Chart(ctx, {
       }
   }
 });
+  
+})
