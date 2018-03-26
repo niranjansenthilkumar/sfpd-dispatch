@@ -1,7 +1,7 @@
 var avgTime = [];
 
 $(document).ready(function () {
-  d3.csv("/sfpd_dispatch/data/sfpd_dispatch_data_subset.csv", function(data) {
+  d3.csv("/sfpd-dispatch/data/sfpd_dispatch_data_subset.csv", function(data) {
     console.log(data);
 
     //empty array for each call type
