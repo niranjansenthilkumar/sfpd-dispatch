@@ -1,204 +1,207 @@
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
-      <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-      <script src="https://d3js.org/d3.v4.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.core.min.js"></script>
-      <script src="lib/moment.js"></script>
-      <script src="lib/jquery-3.2.1.min.js" type="text/javascript"></script>
-
-
-      <link rel="stylesheet" type="text/css" href="styles/all.css" media="all" />
-
-      <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.core.min.js"></script>
+    <script src="lib/moment.js"></script>
+    <script src="lib/jquery-3.2.1.min.js" type="text/javascript"></script>
 
 
-      <title>SFPD Dispatch</title>
-    </head>
-    <body>
-      <script>
-        AOS.init({
-        offset: 200,
-        duration: 600,
-        easing: 'ease-in-sine',
-        delay: 100,});
-      </script>
+    <link rel="stylesheet" type="text/css" href="styles/all.css" media="all" />
 
-      <script type='text/javascript' src='src/analysis.js'></script>
-      <script type='text/javascript' src='src/chartconstructor.js'></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
 
 
-        <img data-aos="fade" id="sanfran" alt="San Francisco" src="images/sanfran.png" />
-        <h1 data-aos="fade" data-aos-delay="700">
-          Optimizing San Francisco's Emergency Dispatch to better predict emergency calls
-        </h1>
-        <div data-aos="fade" data-aos-delay="1400">
-          <p>
-            In 2017, San Francisco Firefighters and Paramedics responded to more than 135,000 calls for service across the San Francisco Region, a 15% increase from 2016. Moreover, at the city’s 911 call center, dispatchers handled 1.26 million emergency calls, a jump from 919,000 in 2007, paralleling a swell in the city's population.
-          </p>
+    <title>SFPD Dispatch</title>
+  </head>
+  <body>
+    <script>
+      AOS.init({
+      offset: 200,
+      duration: 600,
+      easing: 'ease-in-sine',
+      delay: 100,});
+    </script>
 
-          <p>
-            However, a problem still plagues the dispatch system in San Francisco: <strong>increasingly long dispatch times for emergency services.</strong>
-          </p>
-
-          <p>
-            The San Francisco Fire Department has increasingly struggled to get dispatch services to emergencies within the region, an issue that has been detailed in city reports for several years. Last August, there were more than 374 incidents where it took more than 20 minutes for an ambulance to arrive at a call - including nine cases where it took more than an hour.
-          </p>
-
-          <p>
-            Dispatch call center response times also showed a similar pattern. Only about 79 percent of the 1.26 million emergency calls received in 2017 were answered within the national 10-second standard. Nonemergency calls trended lower, with an average of 57 percent of calls answered within the recommended one-minute mark.
-          </p>
-        </div>
-
-        <div data-aos="fade" data-aos-once="true">
-          <h2>Dispatch Time based on Call Type</h2>
-          <canvas id="myChart"></canvas>
-        </div>
-
-        <div data-aos="fade" data-aos-once="true">
-          <p>
-            The above graph shows the average dispatch time it took a person from the dispatch office to send a response for each type of call, excluding hazards. The x axis shows the type of call, and the y axis shows the dispatch time in minutes. On average, Alarm and Traffic-Related Calls showed the lowest dispatch time, while Fire-Related Calls took an average of 5.5 minutes to send to the response team.
-          </p>
-
-          <p>
-            To calculate the dispatch time, the difference between the received timestamp, and the entry timestamp were taken. After, the difference between this value and the dispatch time was also calculated, and the average of all sums was calculated.
-          </p>
-
-          <p>
-            Although this is a general graph displaying dispatch times in the various categories of call types, it is interesting to note that fires have the longest dispatch time out of all categories. One explanation for this may be that often with fire-related incidents, more than one type of dispatch is needed in order to effectively quell the situation, and this extra manpower could be an indicator of a longer dispatch time.
-          </p>
-        </div>
-
-        <div data-aos="fade" data-aos-once="true">
-          <h2>Dispatch Time based on Call Priority</h2>
-          <canvas data-aos="fade" data-aos-once="true"  id="lifeThreateningChart"></canvas>
-        </div>
-
-        <div data-aos="fade" data-aos-once="true">
-          <h2>Response Time based on Call Priority</h2>
-          <canvas data-aos="fade" data-aos-once="true"  id="responseTimeChart"></canvas>
-        </div>
-
-        <div data-aos="fade" data-aos-once="true">
-          <p>
-            Similar to Dispatch Time, the Response Time was calculated by taking the difference between the response time and the on scene time of the unit.
-          </p>
+    <script type='text/javascript' src='src/analysis.js'></script>
+    <script type='text/javascript' src='src/chartconstructor.js'></script>
 
 
-          <p>
-            The above two graphs show the average dispatch/response times it took a person from the dispatch office to send a response unit based on the call priority. The x axis shows call priority between “Non Life-threatening” and “Potentially Life-threatening”, and the y axis shows the dispatch/response time in minutes. In both graphs, potentially threatening calls were dispatched quicker than non-life threatening calls. In the Dispatch Time, situations that were potentially life-threatening were dealt with almost a minute faster than non-priority calls.
-          </p>
-
-          <p>
-            However, it is interesting to note that when it came to response time, there was not a significant difference between non-threatening and potentially life-threatening calls. This analysis shows the core problem that the San Francisco Fire Department has to deal with. Slow response times are the core problem to inefficient response times within the San Francisco Area, and this due to the huge traffic problem within San Francisco. Although dispatch times have gone down in the past few years, response times have stagnated due to the rising population of the area.
-          </p>
-        </div>
-
-        <div data-aos="fade" data-aos-once="true">
-          <h2>Response Time based on Unit Type</h2>
-          <canvas data-aos="fade" data-aos-once="true"  id="unitTimeChart"></canvas>
-        </div>
-
+      <img data-aos="fade" id="sanfran" alt="San Francisco" src="images/sanfran.png" />
+      <h1 data-aos="fade" data-aos-delay="700">
+        Optimizing San Francisco's Emergency Dispatch to better predict emergency calls
+      </h1>
+      <div data-aos="fade" data-aos-delay="1400">
         <p>
-          The above graph show the average response time it took for a unit to arrive on the scene of the call, based on the unit type. The x axis shows the types of units being dispatched, while the y axis shows the response time. The Other category of the chart includes both Support and Investigation Unit Dispatches. Fire-Related Unit-Types arrived on the scene the fastest, with an average response time of 3.3 minutes, while Other and Medical Units took the longest of 8 and 8.4 minutes respectively.
+          In 2017, San Francisco Firefighters and Paramedics responded to more than 135,000 calls for service across the San Francisco Region, a 15% increase from 2016. Moreover, at the city’s 911 call center, dispatchers handled 1.26 million emergency calls, a jump from 919,000 in 2007, paralleling a swell in the city's population.
         </p>
 
         <p>
-          One explanation for the fast nature of fire-department response times compared to other unit types is the effective distribution of the San Francisco Fire Department’s battalion units. The SFFD has various battalion units spread across the city, which provides a key advantage when it comes to firefighting dispatches. On the other hand, medical dispatches took the longest, and this may be due to the traffic related problem that was mentioned before.
+          However, a problem still plagues the dispatch system in San Francisco: <strong>increasingly long dispatch times for emergency services.</strong>
         </p>
 
-        <div data-aos="fade" data-aos-once="true">
-          <h2>Response Time based on Batallion Unit</h2>
-          <canvas data-aos="fade" data-aos-once="true"  id="batTimeChart"></canvas>
-        </div>
+        <p>
+          The San Francisco Fire Department has increasingly struggled to get dispatch services to emergencies within the region, an issue that has been detailed in city reports for several years. Last August, there were more than 374 incidents where it took more than 20 minutes for an ambulance to arrive at a call - including nine cases where it took more than an hour.
+        </p>
 
-        <div data-aos="fade" data-aos-once="true">
-          <p>
-            When trying to find which areas took the longest, we can look at SFFD’s highest functioning unit dispatch: the firefighting unit. Looking at these units spread across these battalions will uncover which areas of San Francisco are prone to slow response times.
-          </p>
-
-          <p>
-            The above graph show the average response time it took for a unit to arrive on the scene of the call, based on the battalion unit. The x axis shows the different battalion units, while the y axis shows the average response time. Battalion Units B04, and B05 took the shortest amount of time to respond to situations, with an average of 4.5 minutes. Battalion Unit B99 took the longest, with an average response time of 7.9 minutes
-          </p>
-
-          <p>
-            As shown above, the area surrounding B99, is prone to most slow response times, which could be related back to San Francisco’s high population and high traffic count. In order to reduce the time in this area, we need to explore the potential that the battalion unit B99 may be understaffed, because they are dealing with a slow responsive zone. Solutions could include adding another battalion unit within the surrounding area to cut the costs between the old unit and the new potential one.
-          </p>
-        </div>
-
-        <script type='text/javascript' src='src/chartconstructor.js'></script>
-
-        <h2>Dispatch Map Visualization</h2>
-
-        <div id="googleMap" style="width:800px;height:600px;" data-aos="fade" data-aos-once="true" ></div>
-
-        <script type='text/javascript' src='src/map.js'></script>
-
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyLhg0ikDSb_BEHQUy19lSXFqQym6Goa8&callback=myMap" async defer ></script>
-
-        <form id="choices" action="">
-          <div id="timeBox" data-aos="fade" data-aos-once="true" >
-            <h4>Time</h4>
-            <input type="radio" name="time" value="lateNightYes" id="lateNightYes"> Late Night (12:00AM-3:59AM)
-          </br>
-            <input type="radio" name="time" value="earlyMorningYes" id="earlyMorningYes"> Early Morning (4:00AM-7:59AM)
-            </br>
-            <input type="radio" name="time" value="morningYes" id="morningYes"> Morning (8:00AM-11:59AM)
-            </br>
-            <input type="radio" name="time" value="afternoonYes" id="afternoonYes"> Afternoon (12:00PM-3:59PM)
-            </br>
-            <input type="radio" name="time" value="eveningYes" id="eveningYes"> Evening (4:00PM-7:59PM)
-            </br>
-            <input type="radio" name="time" value="nightYes" id="nightYes"> Night (8:00PM-11:59PM)
-            </br></br>
-        </div>
-
-        <div id="unitBox" data-aos="fade" data-aos-once="true" >
-          <h4>Unit Type</h4>
-
-          <input type="radio" name="unit" value="medicalYes" id="medicalYes"> Medical
-        </br>
-          <input type="radio" name="unit" value="fireYes" id="fireYes"> Fire
-        </br>
-          <input type="radio" name="unit" value="chiefYes" id="chiefYes"> Chief
-        </br>
-          <input type="radio" name="unit" value="privateYes" id="privateYes"> Private
-        </br>
-          <input type="radio" name="unit" value="rescueYes" id="rescueYes"> Rescue
-        </br></br>
-
+        <p>
+          Dispatch call center response times also showed a similar pattern. Only about 79 percent of the 1.26 million emergency calls received in 2017 were answered within the national 10-second standard. Nonemergency calls trended lower, with an average of 57 percent of calls answered within the recommended one-minute mark.
+        </p>
       </div>
 
-        </form>
-        </br></br></br></br></br></br></br></br></br></br></br></br>
-        <div data-aos="fade" data-aos-once="true">
-          <p>
-            Given an address, time, and unit type, we can visualize the areas that are experiencing the most slow response times in the San Francisco Area.
-          </p>
+      <div data-aos="fade" data-aos-once="true">
+        <h2>Dispatch Time based on Call Type</h2>
+        <canvas id="myChart"></canvas>
+      </div>
 
-          <p>
-            The visualization above is set to two different parameters, time and unit type. The times are separated into 4 hour increments representing a very different subset of calls that are being answered each day. Furthermore, the unit type is based on different types of units that are being dispatched into each area.          </p>
-          </p>
+      <div data-aos="fade" data-aos-once="true">
+        <p>
+          The above graph shows the average dispatch time it took a person from the dispatch office to send a response for each type of call, excluding hazards. The x axis shows the type of call, and the y axis shows the dispatch time in minutes. On average, Alarm and Traffic-Related Calls showed the lowest dispatch time, while Fire-Related Calls took an average of 5.5 minutes to send to the response team.
+        </p>
 
-          <p>
-            Although each parameter combination represented a very different dataset of call-types, in almost every single combination, the area of “South Of Market” receives the most dispatches out of every single metropolitan area within San Francisco. One explanation for the frequency of calls in SOMA, either could be influx of people living within the area due to many museums and companies being located in the area, or SOMA being generally an unsafe part of San Francisco. It is reported that SOMA is one of the more unsafe parts of San Francisco, attributed to a high homeless population within the area, as well as poorly maintained infrastructure within the general area (ex: broken lights, non functioning utilities.)
-          </p>
+        <p>
+          To calculate the dispatch time, the difference between the received timestamp, and the entry timestamp were taken. After, the difference between this value and the dispatch time was also calculated, and the average of all sums was calculated.
+        </p>
 
-          <p>
-            In a city as dense as San Francisco, the close proximity of emergency dispatch calls mirror a huge problem that the San Francisco Fire Department needs to solve. By allowing more resources as well as representation in more unsafe parts of San Francisco in terms of dispatch as well as response units, the San Francisco Fire Department can effectively reduce the time taken, and allocate resources more efficiently than before.
-          </p>
-        </div>
+        <p>
+          Although this is a general graph displaying dispatch times in the various categories of call types, it is interesting to note that fires have the longest dispatch time out of all categories. One explanation for this may be that often with fire-related incidents, more than one type of dispatch is needed in order to effectively quell the situation, and this extra manpower could be an indicator of a longer dispatch time.
+        </p>
+      </div>
 
-        <h1>References</h1>
-        <ol>Wong, Perry K. “San Francisco Emergencies – Wonks This Way – Medium.” Medium, Wonks This Way, 27 June 2017, medium.com/wonks-this-way/san-francisco-emergencies-7d3facb64e1b.</ol>
-        <ol>“Fire Incidents | DataSF | City and County of San Francisco.” San Francisco Data, data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric/data.</ol>
-        <ol>Johnson, Lizzie. “Every Second Counts: SF Emergency Dispatchers Fall Behind.” San Francisco Chronicle, San Francisco Chronicle, 8 Jan. 2017, www.sfchronicle.com/bayarea/article/Every-second-counts-SF-emergency-dispatchers-10839076.php#photo-12145118.</ol>
+      <div data-aos="fade" data-aos-once="true">
+        <h2>Dispatch Time based on Call Priority</h2>
+        <canvas data-aos="fade" data-aos-once="true"  id="lifeThreateningChart"></canvas>
+      </div>
 
-    </body>
-  </html>
+      <div data-aos="fade" data-aos-once="true">
+        <h2>Response Time based on Call Priority</h2>
+        <canvas data-aos="fade" data-aos-once="true"  id="responseTimeChart"></canvas>
+      </div>
+
+      <div data-aos="fade" data-aos-once="true">
+        <p>
+          Similar to Dispatch Time, the Response Time was calculated by taking the difference between the response time and the on scene time of the unit.
+        </p>
+
+
+        <p>
+          The above two graphs show the average dispatch/response times it took a person from the dispatch office to send a response unit based on the call priority. The x axis shows call priority between “Non Life-threatening” and “Potentially Life-threatening”, and the y axis shows the dispatch/response time in minutes. In both graphs, potentially threatening calls were dispatched quicker than non-life threatening calls. In the Dispatch Time, situations that were potentially life-threatening were dealt with almost a minute faster than non-priority calls.
+        </p>
+
+        <p>
+          However, it is interesting to note that when it came to response time, there was not a significant difference between non-threatening and potentially life-threatening calls. This analysis shows the core problem that the San Francisco Fire Department has to deal with. Slow response times are the core problem to inefficient response times within the San Francisco Area, and this due to the huge traffic problem within San Francisco. Although dispatch times have gone down in the past few years, response times have stagnated due to the rising population of the area.
+        </p>
+      </div>
+
+      <div data-aos="fade" data-aos-once="true">
+        <h2>Response Time based on Unit Type</h2>
+        <canvas data-aos="fade" data-aos-once="true"  id="unitTimeChart"></canvas>
+      </div>
+
+      <p>
+        The above graph show the average response time it took for a unit to arrive on the scene of the call, based on the unit type. The x axis shows the types of units being dispatched, while the y axis shows the response time. The Other category of the chart includes both Support and Investigation Unit Dispatches. Fire-Related Unit-Types arrived on the scene the fastest, with an average response time of 3.3 minutes, while Other and Medical Units took the longest of 8 and 8.4 minutes respectively.
+      </p>
+
+      <p>
+        One explanation for the fast nature of fire-department response times compared to other unit types is the effective distribution of the San Francisco Fire Department’s battalion units. The SFFD has various battalion units spread across the city, which provides a key advantage when it comes to firefighting dispatches. On the other hand, medical dispatches took the longest, and this may be due to the traffic related problem that was mentioned before.
+      </p>
+
+      <div data-aos="fade" data-aos-once="true">
+        <h2>Response Time based on Batallion Unit</h2>
+        <canvas data-aos="fade" data-aos-once="true"  id="batTimeChart"></canvas>
+      </div>
+
+
+      <div data-aos="fade" data-aos-once="true">
+        <p>
+          When trying to find which areas took the longest, we can look at SFFD’s highest functioning unit dispatch: the firefighting unit. Looking at these units spread across these battalions will uncover which areas of San Francisco are prone to slow response times.
+        </p>
+
+        <p>
+          The above graph show the average response time it took for a unit to arrive on the scene of the call, based on the battalion unit. The x axis shows the different battalion units, while the y axis shows the average response time. Battalion Units B04, and B05 took the shortest amount of time to respond to situations, with an average of 4.5 minutes. Battalion Unit B99 took the longest, with an average response time of 7.9 minutes
+        </p>
+
+        <p>
+          As shown above, the area surrounding B99, is prone to most slow response times, which could be related back to San Francisco’s high population and high traffic count. In order to reduce the time in this area, we need to explore the potential that the battalion unit B99 may be understaffed, because they are dealing with a slow responsive zone. Solutions could include adding another battalion unit within the surrounding area to cut the costs between the old unit and the new potential one.
+        </p>
+      </div>
+
+      <script type='text/javascript' src='src/chartconstructor.js'></script>
+
+      <h2>Dispatch Map Visualization</h2>
+
+      <div id="googleMap" style="width:800px;height:600px;" data-aos="fade" data-aos-once="true" ></div>
+
+
+      <script type='text/javascript' src='src/map.js'></script>
+
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyLhg0ikDSb_BEHQUy19lSXFqQym6Goa8&callback=myMap" async defer ></script>
+
+      <form id="choices" action="">
+        <div id="timeBox" data-aos="fade" data-aos-once="true" >
+          <h4>Time</h4>
+          <input type="radio" name="time" value="lateNightYes" id="lateNightYes"> Late Night (12:00AM-3:59AM)
+        </br>
+          <input type="radio" name="time" value="earlyMorningYes" id="earlyMorningYes"> Early Morning (4:00AM-7:59AM)
+          </br>
+          <input type="radio" name="time" value="morningYes" id="morningYes"> Morning (8:00AM-11:59AM)
+          </br>
+          <input type="radio" name="time" value="afternoonYes" id="afternoonYes"> Afternoon (12:00PM-3:59PM)
+          </br>
+          <input type="radio" name="time" value="eveningYes" id="eveningYes"> Evening (4:00PM-7:59PM)
+          </br>
+          <input type="radio" name="time" value="nightYes" id="nightYes"> Night (8:00PM-11:59PM)
+          </br></br>
+      </div>
+
+      <div id="unitBox" data-aos="fade" data-aos-once="true" >
+        <h4>Unit Type</h4>
+
+        <input type="radio" name="unit" value="medicalYes" id="medicalYes"> Medical
+      </br>
+        <input type="radio" name="unit" value="fireYes" id="fireYes"> Fire
+      </br>
+        <input type="radio" name="unit" value="chiefYes" id="chiefYes"> Chief
+      </br>
+        <input type="radio" name="unit" value="privateYes" id="privateYes"> Private
+      </br>
+        <input type="radio" name="unit" value="rescueYes" id="rescueYes"> Rescue
+      </br></br>
+
+    </div>
+
+      </form>
+      </br></br></br></br></br></br></br></br></br></br></br></br>
+      <div data-aos="fade" data-aos-once="true">
+        <p>
+          Given an address, time, and unit type, we can visualize the areas that are experiencing the most slow response times in the San Francisco Area.
+        </p>
+
+        <p>
+          The visualization above is set to two different parameters, time and unit type. The times are separated into 4 hour increments representing a very different subset of calls that are being answered each day. Furthermore, the unit type is based on different types of units that are being dispatched into each area.          </p>
+        </p>
+
+        <p>
+          Although each parameter combination represented a very different dataset of call-types, in almost every single combination, the area of “South Of Market” receives the most dispatches out of every single metropolitan area within San Francisco. One explanation for the frequency of calls in SOMA, either could be influx of people living within the area due to many museums and companies being located in the area, or SOMA being generally an unsafe part of San Francisco. It is reported that SOMA is one of the more unsafe parts of San Francisco, attributed to a high homeless population within the area, as well as poorly maintained infrastructure within the general area (ex: broken lights, non functioning utilities.)
+        </p>
+
+        <p>
+          In a city as dense as San Francisco, the close proximity of emergency dispatch calls mirror a huge problem that the San Francisco Fire Department needs to solve. By allowing more resources as well as representation in more unsafe parts of San Francisco in terms of dispatch as well as response units, the San Francisco Fire Department can effectively reduce the time taken, and allocate resources more efficiently than before.
+        </p>
+      </div>
+
+      <h1>References</h1>
+      <ol>Wong, Perry K. “San Francisco Emergencies – Wonks This Way – Medium.” Medium, Wonks This Way, 27 June 2017, medium.com/wonks-this-way/san-francisco-emergencies-7d3facb64e1b.</ol>
+      <ol>“Fire Incidents | DataSF | City and County of San Francisco.” San Francisco Data, data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric/data.</ol>
+      <ol>Johnson, Lizzie. “Every Second Counts: SF Emergency Dispatchers Fall Behind.” San Francisco Chronicle, San Francisco Chronicle, 8 Jan. 2017, www.sfchronicle.com/bayarea/article/Every-second-counts-SF-emergency-dispatchers-10839076.php#photo-12145118.</ol>
+
+  </body>
+</html>
+
