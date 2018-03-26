@@ -21,7 +21,30 @@ p {
   line-height: 200%;
 }
 
-
 #sanfran{
   width: 25%;
+}
+
+#myChart{
+  margin-top: 25px;
+}
+
+#lifeThreateningChart{
+  margin-top: 25px;
+}
+
+#responseTimeChart{
+  margin-top: 25px;
+}
+
+#unitTimeChart{
+  margin-top: 25px;
+}
+
+#batTimeChart{
+  margin-top: 25px;
+}
+
+.hospitalCharts{
+  margin-top: 100px;
 }

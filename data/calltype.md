@@ -1,3 +1,4 @@
+######CALL TYPE##########
 Medical:
 * Medical Incident
 
@@ -28,7 +29,7 @@ Other:
 * Citizen Assist / Service Call
 * Elevator / Escalator Rescue
 
-######UNIT TYPE
+######UNIT TYPE##########
 Medical
 * MEDIC
 
@@ -49,3 +50,6 @@ Rescue:
 Other:
 * SUPPORT
 * INVESTIGATION
+
+######Batallions##########
+* B01, B02, B03, B04, B05, B06, B07, B08, B09, B10, B99

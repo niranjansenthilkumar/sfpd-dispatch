@@ -1,4 +1,6 @@
-(function() {
+var avgTime = [];
+
+$(document).ready(function () {
   d3.csv("/data/sfpd_dispatch_data_subset.csv", function(data) {
     console.log(data);
 
@@ -55,16 +57,26 @@
 
 
     });
-    avgTime = [];
-    avgTimeCalculation(totalTime, count, avgTime);
+    avgTimeLocal = [];
+    avgTimeCalculation(totalTime, count, avgTimeLocal);
+    avgTime = avgTimeLocal.map(Number);
+    //someFunction(avgTime, time);
+
     avgTimeALS = [];
     avgTimeCalculation(alsTotalTime, alsCount, avgTimeALS);
+    avgTimeALS = avgTimeALS.map(Number);
+
     avgTimeUnit = [];
     avgTimeCalculation(unitTotalTime, unitCount, avgTimeUnit);
+    avgTimeUnit = avgTimeUnit.map(Number);
+
     avgTimeHospital = [];
     avgTimeCalculation(hospitalTotalTime, hospitalCount, avgTimeHospital);
+    avgTimeHospital = avgTimeHospital.map(Number);
+
     avgTimeBattalion = [];
     avgTimeCalculation(batallionTotalTime, batallionCount, avgTimeBattalion);
+    avgTimeBattalion = avgTimeBattalion.map(Number);
 
     // console.log(count);
     // console.log(totalTime);
@@ -76,6 +88,10 @@
   });
 }());
 
+function returnTime(avgTime){
+  return avgTime;
+}
+
 function avgTimeCalculation(totalTime, countCall, avgTime){
     length = countCall.length;
     for(i = 0; i < length; i++){
@@ -83,9 +99,10 @@ function avgTimeCalculation(totalTime, countCall, avgTime){
       freq = countCall[i];
       avg = total/freq;
       avg = avg/60;
-      avg = avg.toFixed(2);
+      avg = avg.toFixed(1);
       avgTime.push(avg);
     }
+    return avgTime;
 }
 
 //determines dispatchTime based on difference in recieved times.

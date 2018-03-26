@@ -1,55 +1,104 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="node_modules/lodash/lodash.js"></script>
-    <script src="lib/moment.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="styles/all.css" media="all" />
-
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
+      <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+      <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+      <script src="https://d3js.org/d3.v4.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+      <script src="node_modules/lodash/lodash.js"></script>
+      <script src="lib/moment.js"></script>
+      <script src="lib/jquery-3.2.1.min.js" type="text/javascript"></script>
 
 
-    <title>SFPD Dispatch</title>
-  </head>
-  <body>
-    <script>
-      AOS.init({
-      offset: 200,
-      duration: 600,
-      easing: 'ease-in-sine',
-      delay: 100,});
-    </script>
+      <link rel="stylesheet" type="text/css" href="styles/all.css" media="all" />
 
-    <script type='text/javascript' src='src/analysis.js'></script>
+      <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
 
 
-      <img data-aos="fade" id="sanfran" alt="San Francisco" src="images/sanfran.png" />
-      <h1 data-aos="fade" data-aos-delay="700">
-        Optimizing San Francisco's Emergency Dispatch to better predict emergency calls
-      </h1>
-      <div data-aos="fade" data-aos-delay="1400">
-        <p>
-          In 2017, San Francisco Firefighters and Paramedics responded to more than 135,000 calls for service across the San Francisco Region, a 15% increase from 2016. Moreover, at the city’s 911 call center, dispatchers handled 1.26 million emergency calls, a jump from 919,000 in 2007, paralleling a swell in the city's population.
-        </p>
+      <title>SFPD Dispatch</title>
+    </head>
+    <body>
+      <script>
+        AOS.init({
+        offset: 200,
+        duration: 600,
+        easing: 'ease-in-sine',
+        delay: 100,});
+      </script>
 
-        <p>
-          However, a problem still plagues the dispatch system in San Francisco: <strong>increasingly long dispatch times for emergency services.</strong>
-        </p>
+      <script type='text/javascript' src='src/analysis.js'></script>
+      <script type='text/javascript' src='src/chartconstructor.js'></script>
 
-        <p>
-          The San Francisco Fire Department has increasingly struggled to get dispatch services to emergencies within the region, an issue that has been detailed in city reports for several years. Last August, there were more than 374 incidents where it took more than 20 minutes for an ambulance to arrive at a call - including nine cases where it took more than an hour.
-        </p>
 
-        <p>
-          Dispatch call center response times also showed a similar pattern. Only about 79 percent of the 1.26 million emergency calls received in 2017 were answered within the national 10-second standard. Nonemergency calls trended lower, with an average of 57 percent of calls answered within the recommended one-minute mark.
-        </p>
-      </div>
+        <img data-aos="fade" id="sanfran" alt="San Francisco" src="images/sanfran.png" />
+        <h1 data-aos="fade" data-aos-delay="700">
+          Optimizing San Francisco's Emergency Dispatch to better predict emergency calls
+        </h1>
+        <div data-aos="fade" data-aos-delay="1400">
+          <p>
+            In 2017, San Francisco Firefighters and Paramedics responded to more than 135,000 calls for service across the San Francisco Region, a 15% increase from 2016. Moreover, at the city’s 911 call center, dispatchers handled 1.26 million emergency calls, a jump from 919,000 in 2007, paralleling a swell in the city's population.
+          </p>
 
-  </body>
-</html>
+          <p>
+            However, a problem still plagues the dispatch system in San Francisco: <strong>increasingly long dispatch times for emergency services.</strong>
+          </p>
+
+          <p>
+            The San Francisco Fire Department has increasingly struggled to get dispatch services to emergencies within the region, an issue that has been detailed in city reports for several years. Last August, there were more than 374 incidents where it took more than 20 minutes for an ambulance to arrive at a call - including nine cases where it took more than an hour.
+          </p>
+
+          <p>
+            Dispatch call center response times also showed a similar pattern. Only about 79 percent of the 1.26 million emergency calls received in 2017 were answered within the national 10-second standard. Nonemergency calls trended lower, with an average of 57 percent of calls answered within the recommended one-minute mark.
+          </p>
+        </div>
+
+        <div data-aos="fade" data-aos-once="true">
+          <h2>Dispatch Time based on Call Type</h2>
+          <canvas id="myChart"></canvas>
+        </div>
+
+        <div data-aos="fade" data-aos-once="true">
+          <h2>Dispatch Time based on Call Priority</h2>
+          <canvas data-aos="fade" data-aos-once="true"  id="lifeThreateningChart"></canvas>
+        </div>
+
+        <div data-aos="fade" data-aos-once="true">
+          <h2>Response Time based on Call Priority</h2>
+          <canvas data-aos="fade" data-aos-once="true"  id="responseTimeChart"></canvas>
+        </div>
+
+        <div data-aos="fade" data-aos-once="true">
+          <h2>Response Time based on Unit Type</h2>
+          <canvas data-aos="fade" data-aos-once="true"  id="unitTimeChart"></canvas>
+        </div>
+
+        <div data-aos="fade" data-aos-once="true">
+          <h2>Response Time based on Batallion Unit</h2>
+          <canvas data-aos="fade" data-aos-once="true"  id="batTimeChart"></canvas>
+        </div>
+
+
+        <script type='text/javascript' src='src/chartconstructor.js'></script>
+
+        <h1>My First Google Map</h1>
+
+        <div id="googleMap" style="width:100%;height:400px;"></div>
+
+        <script>
+        function myMap() {
+        var mapProp= {
+            center:new google.maps.LatLng(37.7749,-122.4194),
+            zoom:11,
+        };
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        }
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyLhg0ikDSb_BEHQUy19lSXFqQym6Goa8&callback=myMap"></script>
+
+
+    </body>
+  </html>
