@@ -61,6 +61,24 @@
         </div>
 
         <div data-aos="fade" data-aos-once="true">
+          <p>
+            In 2017, San Francisco Firefighters and Paramedics responded to more than 135,000 calls for service across the San Francisco Region, a 15% increase from 2016. Moreover, at the city’s 911 call center, dispatchers handled 1.26 million emergency calls, a jump from 919,000 in 2007, paralleling a swell in the city's population.
+          </p>
+
+          <p>
+            However, a problem still plagues the dispatch system in San Francisco: <strong>increasingly long dispatch times for emergency services.</strong>
+          </p>
+
+          <p>
+            The San Francisco Fire Department has increasingly struggled to get dispatch services to emergencies within the region, an issue that has been detailed in city reports for several years. Last August, there were more than 374 incidents where it took more than 20 minutes for an ambulance to arrive at a call - including nine cases where it took more than an hour.
+          </p>
+
+          <p>
+            Dispatch call center response times also showed a similar pattern. Only about 79 percent of the 1.26 million emergency calls received in 2017 were answered within the national 10-second standard. Nonemergency calls trended lower, with an average of 57 percent of calls answered within the recommended one-minute mark.
+          </p>
+        </div>
+
+        <div data-aos="fade" data-aos-once="true">
           <h2>Dispatch Time based on Call Priority</h2>
           <canvas data-aos="fade" data-aos-once="true"  id="lifeThreateningChart"></canvas>
         </div>
@@ -68,6 +86,24 @@
         <div data-aos="fade" data-aos-once="true">
           <h2>Response Time based on Call Priority</h2>
           <canvas data-aos="fade" data-aos-once="true"  id="responseTimeChart"></canvas>
+        </div>
+
+        <div data-aos="fade" data-aos-once="true">
+          <p>
+            In 2017, San Francisco Firefighters and Paramedics responded to more than 135,000 calls for service across the San Francisco Region, a 15% increase from 2016. Moreover, at the city’s 911 call center, dispatchers handled 1.26 million emergency calls, a jump from 919,000 in 2007, paralleling a swell in the city's population.
+          </p>
+
+          <p>
+            However, a problem still plagues the dispatch system in San Francisco: <strong>increasingly long dispatch times for emergency services.</strong>
+          </p>
+
+          <p>
+            The San Francisco Fire Department has increasingly struggled to get dispatch services to emergencies within the region, an issue that has been detailed in city reports for several years. Last August, there were more than 374 incidents where it took more than 20 minutes for an ambulance to arrive at a call - including nine cases where it took more than an hour.
+          </p>
+
+          <p>
+            Dispatch call center response times also showed a similar pattern. Only about 79 percent of the 1.26 million emergency calls received in 2017 were answered within the national 10-second standard. Nonemergency calls trended lower, with an average of 57 percent of calls answered within the recommended one-minute mark.
+          </p>
         </div>
 
         <div data-aos="fade" data-aos-once="true">
@@ -80,12 +116,29 @@
           <canvas data-aos="fade" data-aos-once="true"  id="batTimeChart"></canvas>
         </div>
 
+        <div data-aos="fade" data-aos-once="true">
+          <p>
+            In 2017, San Francisco Firefighters and Paramedics responded to more than 135,000 calls for service across the San Francisco Region, a 15% increase from 2016. Moreover, at the city’s 911 call center, dispatchers handled 1.26 million emergency calls, a jump from 919,000 in 2007, paralleling a swell in the city's population.
+          </p>
+
+          <p>
+            However, a problem still plagues the dispatch system in San Francisco: <strong>increasingly long dispatch times for emergency services.</strong>
+          </p>
+
+          <p>
+            The San Francisco Fire Department has increasingly struggled to get dispatch services to emergencies within the region, an issue that has been detailed in city reports for several years. Last August, there were more than 374 incidents where it took more than 20 minutes for an ambulance to arrive at a call - including nine cases where it took more than an hour.
+          </p>
+
+          <p>
+            Dispatch call center response times also showed a similar pattern. Only about 79 percent of the 1.26 million emergency calls received in 2017 were answered within the national 10-second standard. Nonemergency calls trended lower, with an average of 57 percent of calls answered within the recommended one-minute mark.
+          </p>
+        </div>
 
         <script type='text/javascript' src='src/chartconstructor.js'></script>
 
-        <h1>My First Google Map</h1>
+        <h2>Dispatch Map Visualization</h2>
 
-        <div id="googleMap" style="width:100%;height:400px;"></div>
+        <div id="googleMap" style="width:100%;height:600px;" data-aos="fade" data-aos-once="true" ></div>
 
         <script type='text/javascript' src='src/map.js'></script>
 
@@ -93,9 +146,9 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyLhg0ikDSb_BEHQUy19lSXFqQym6Goa8&callback=myMap"async defer ></script>
 
         <form id="choices" action="javascript:return false;">
+          <div id="timeBox" data-aos="fade" data-aos-once="true" >
             <h2>Time</h2>
 
-          </br></br>
 
             <input type="radio" name="time" value="lateNightYes" id="lateNightYes"> Late Night (12:00AM-3:59AM)
           </br></br>
@@ -109,10 +162,10 @@
           </br></br>
             <input type="radio" name="time" value="nightYes" id="nightYes"> Night (8:00PM-11:59PM)
           </br></br>
+        </div>
 
+        <div id="unitBox" data-aos="fade" data-aos-once="true" >
           <h2>Unit Type</h2>
-
-        </br></br>
 
           <input type="radio" name="unit" value="medicalYes" id="medicalYes"> Medical
         </br></br>
@@ -125,8 +178,32 @@
           <input type="radio" name="unit" value="rescueYes" id="rescueYes"> Rescue
         </br></br>
 
-            <button id="showAll">reset</button>
+      </div>
+
         </form>
+        </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+        <div data-aos="fade" data-aos-once="true">
+          <p>
+            In 2017, San Francisco Firefighters and Paramedics responded to more than 135,000 calls for service across the San Francisco Region, a 15% increase from 2016. Moreover, at the city’s 911 call center, dispatchers handled 1.26 million emergency calls, a jump from 919,000 in 2007, paralleling a swell in the city's population.
+          </p>
+
+          <p>
+            However, a problem still plagues the dispatch system in San Francisco: <strong>increasingly long dispatch times for emergency services.</strong>
+          </p>
+
+          <p>
+            The San Francisco Fire Department has increasingly struggled to get dispatch services to emergencies within the region, an issue that has been detailed in city reports for several years. Last August, there were more than 374 incidents where it took more than 20 minutes for an ambulance to arrive at a call - including nine cases where it took more than an hour.
+          </p>
+
+          <p>
+            Dispatch call center response times also showed a similar pattern. Only about 79 percent of the 1.26 million emergency calls received in 2017 were answered within the national 10-second standard. Nonemergency calls trended lower, with an average of 57 percent of calls answered within the recommended one-minute mark.
+          </p>
+        </div>
+
+        <h1>References</h1>
+        <ol>Wong, Perry K. “San Francisco Emergencies – Wonks This Way – Medium.” Medium, Wonks This Way, 27 June 2017, medium.com/wonks-this-way/san-francisco-emergencies-7d3facb64e1b.</ol>
+        <ol>“Fire Incidents | DataSF | City and County of San Francisco.” San Francisco Data, data.sfgov.org/Public-Safety/Fire-Incidents/wr8u-xric/data.</ol>
+        <ol>Johnson, Lizzie. “Every Second Counts: SF Emergency Dispatchers Fall Behind.” San Francisco Chronicle, San Francisco Chronicle, 8 Jan. 2017, www.sfchronicle.com/bayarea/article/Every-second-counts-SF-emergency-dispatchers-10839076.php#photo-12145118.</ol>
 
     </body>
   </html>

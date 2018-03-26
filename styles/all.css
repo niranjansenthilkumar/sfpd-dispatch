@@ -45,6 +45,24 @@ p {
   margin-top: 25px;
 }
 
+#timeBox{
+  border: 1px solid black;
+  margin-top: 20px;
+  width: 500px;
+  margin-left: 130px;
+
+  float: left;
+}
+
+#unitBox{
+  border: 1px solid black;
+  margin-top: 20px;
+  width: 400px;
+  float: right;
+  margin-right: 130px;
+
+}
+
 .hospitalCharts{
   margin-top: 100px;
 }

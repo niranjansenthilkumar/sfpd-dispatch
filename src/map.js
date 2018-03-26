@@ -19,11 +19,13 @@ var attributesChecked = {
     }
 };
 
+
+
 function myMap() {
   var myLatLng = {lat: 37.755426, lng: -122.439151};
 
   var mapOptions = {
-        zoom: 12,
+        zoom: 13,
         center: myLatLng
   }
 
@@ -223,7 +225,20 @@ function initListeners() {
           if(unit == "ALL"){
             setMarkersByTime(map, 00, 03);
           }
-          setMarkersByTimeAndUnit(map, 00, 03, unit);
+          else if(unit == "FIRE"){
+            setMarkersByTime(map, 00, 03, "ENGINE");
+            setMarkersByTime(map, 00, 03, "TRUCK");
+          }
+          else if(unit == "RESCUE"){
+            setMarkersByTime(map, 00, 03, "RESCUE SQUAD");
+            setMarkersByTime(map, 00, 03, "RESCUE CAPTAIN");
+          }
+          else if(unit == "OTHER"){
+            setMarkersByTime(map, 00, 03, "INVESTIGATION");
+            setMarkersByTime(map, 00, 03, "INVESTIGATION");
+          }
+          else{
+          setMarkersByTimeAndUnit(map, 00, 03, unit);}
 
       });
   document.getElementById("earlyMorningYes").addEventListener("click", function() {
@@ -234,7 +249,20 @@ function initListeners() {
               if(unit == "ALL"){
                 setMarkersByTime(map, 04, 07);
               }
-              setMarkersByTimeAndUnit(map, 04, 07, unit);
+              else if(unit == "FIRE"){
+                setMarkersByTime(map, 04, 07, "ENGINE");
+                setMarkersByTime(map, 04, 07, "TRUCK");
+              }
+              else if(unit == "RESCUE"){
+                setMarkersByTime(map, 04, 07, "RESCUE SQUAD");
+                setMarkersByTime(map, 04, 07, "RESCUE CAPTAIN");
+              }
+              else if(unit == "OTHER"){
+                setMarkersByTime(map, 04, 07, "INVESTIGATION");
+                setMarkersByTime(map, 04, 07, "INVESTIGATION");
+              }
+              else{
+              setMarkersByTimeAndUnit(map, 04, 07, unit);}
           });
   document.getElementById("morningYes").addEventListener("click", function() {
               resetAttribute("time");
@@ -244,7 +272,20 @@ function initListeners() {
               if(unit == "ALL"){
                 setMarkersByTime(map, 08, 11);
               }
-              setMarkersByTimeAndUnit(map, 08, 11, unit);
+              else if(unit == "FIRE"){
+                setMarkersByTime(map, 08, 11, "ENGINE");
+                setMarkersByTime(map, 08, 11, "TRUCK");
+              }
+              else if(unit == "RESCUE"){
+                setMarkersByTime(map, 08, 11, "RESCUE SQUAD");
+                setMarkersByTime(map, 08, 11, "RESCUE CAPTAIN");
+              }
+              else if(unit == "OTHER"){
+                setMarkersByTime(map, 08, 11, "INVESTIGATION");
+                setMarkersByTime(map, 11, 08, "INVESTIGATION");
+              }
+              else{
+              setMarkersByTimeAndUnit(map, 08, 11, unit);}
           });
   document.getElementById("afternoonYes").addEventListener("click", function() {
               resetAttribute("time");
@@ -254,7 +295,20 @@ function initListeners() {
               if(unit == "ALL"){
                 setMarkersByTime(map, 12, 15);
               }
-              setMarkersByTimeAndUnit(map, 12, 15, unit);
+              else if(unit == "FIRE"){
+                setMarkersByTime(map, 12, 15, "ENGINE");
+                setMarkersByTime(map, 12, 15, "TRUCK");
+              }
+              else if(unit == "RESCUE"){
+                setMarkersByTime(map, 12, 15, "RESCUE SQUAD");
+                setMarkersByTime(map, 12, 15, "RESCUE CAPTAIN");
+              }
+              else if(unit == "OTHER"){
+                setMarkersByTime(map, 12, 15, "INVESTIGATION");
+                setMarkersByTime(map, 12, 15, "INVESTIGATION");
+              }
+              else{
+              setMarkersByTimeAndUnit(map, 12, 15, unit);}
           });
   document.getElementById("eveningYes").addEventListener("click", function() {
               resetAttribute("time");
@@ -264,7 +318,20 @@ function initListeners() {
               if(unit == "ALL"){
                 setMarkersByTime(map, 16, 19);
               }
-              setMarkersByTimeAndUnit(map, 16, 19, unit);
+              else if(unit == "FIRE"){
+                setMarkersByTime(map, 16, 19, "ENGINE");
+                setMarkersByTime(map, 16, 19, "TRUCK");
+              }
+              else if(unit == "RESCUE"){
+                setMarkersByTime(map, 16, 19, "RESCUE SQUAD");
+                setMarkersByTime(map, 16, 19, "RESCUE CAPTAIN");
+              }
+              else if(unit == "OTHER"){
+                setMarkersByTime(map, 16, 19, "INVESTIGATION");
+                setMarkersByTime(map, 16, 19, "INVESTIGATION");
+              }
+              else{
+              setMarkersByTimeAndUnit(map, 16, 19, unit);}
           });
   document.getElementById("nightYes").addEventListener("click", function() {
               resetAttribute("time");
@@ -274,7 +341,20 @@ function initListeners() {
               if(unit == "ALL"){
                 setMarkersByTime(map, 20, 23);
               }
-              setMarkersByTimeAndUnit(map, 20, 23, unit);
+              else if(unit == "FIRE"){
+                setMarkersByTime(map, 20, 23, "ENGINE");
+                setMarkersByTime(map, 20, 23, "TRUCK");
+              }
+              else if(unit == "RESCUE"){
+                setMarkersByTime(map, 20, 23, "RESCUE SQUAD");
+                setMarkersByTime(map, 20, 23, "RESCUE CAPTAIN");
+              }
+              else if(unit == "OTHER"){
+                setMarkersByTime(map, 20, 23, "INVESTIGATION");
+                setMarkersByTime(map, 20, 23, "INVESTIGATION");
+              }
+              else{
+              setMarkersByTimeAndUnit(map, 20, 23, unit);}
           });
   //units
   document.getElementById("medicalYes").addEventListener("click", function() {
@@ -336,6 +416,29 @@ function initListeners() {
           });
 }
 
+//set on map helper function
+function setMapUP(time){
+  if(responseTime >= 00 && responseTime <= 03){
+
+  }
+  else if(responseTime >= 04 && responseTime <= 07){
+
+  }
+  else if(responseTime >= 08 && responseTime <= 11){
+
+  }
+  else if(responseTime >= 12 && responseTime <= 15){
+
+  }
+  else if(responseTime >= 16 && responseTime < 19){
+
+  }
+  else if(responseTime > 20 && responseTime < 23){
+
+  }
+
+}
+
 function setOnMap() {
     for (var i = 0; i < markersArray.length; i++) {
         var check = true;
@@ -359,3 +462,112 @@ function setOnMap() {
         }
     }
 }
+
+function resetAttribute(attribute) {
+    if (attribute != "all") {
+        // Reset selected attribute
+        for (var setting in attributesChecked[attribute]) {
+            if (attributesChecked[attribute].hasOwnProperty(setting)) {
+                attributesChecked[attribute][setting] = false;
+            }
+        }
+    } else {
+        // Reset all attributes
+        for (var attr in attributesChecked) {
+            if (attributesChecked.hasOwnProperty(attr)) {
+                for (var setting in attributesChecked[attr]) {
+                    if (attributesChecked[attr].hasOwnProperty(setting)) {
+                        attributesChecked[attr][setting] = false;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// var map;
+// var addedMEs = [];
+// var addedConcentras = [];
+//
+//
+// function myMap() {
+//   map = new google.maps.Map(document.getElementById('googleMap'), {
+//     zoom: 4,
+//     center: {
+//       lat: 40,
+//       lng: -95
+//     },
+//     styles: [{
+//       stylers: [{
+//         saturation: -100
+//       }]
+//     }]
+//   });
+//
+//   setMarkers(map);
+// }
+//
+// function toggleMELocations() {
+//   if (MEs) {
+//     for (i in MEs) {
+//       var bounds = map.getBounds();
+//       var visibility = (bounds.contains(addedMEs[i].position) == true) ? false : true;
+//       addedMEs[i].setVisible(visibility);
+//     }
+//   }
+// }
+//
+// function toggleConcentraLocations() {
+//   if (Concentras) {
+//     for (i in Concentras) {
+//       var bounds = map.getBounds();
+//       var visibility = (bounds.contains(addedConcentras[i].position) == true) ? false : true;
+//       addedConcentras[i].setVisible(visibility);
+//     }
+//   }
+// }
+//
+//
+// // MEC locations
+// var MEs = [
+//   ['aaa', 36.07, -75.79],
+//   ['bbb', 40.07, -83.79]
+// ];
+//
+// // CC locations
+// var Concentras = [
+//   ['xxx', 38.01, -75.55],
+//   ['yyy', 30.10, -90.3]
+// ];
+//
+// function setMarkers(map) {
+//   // Adds markers to the map.
+//   for (var i = 0; i < MEs.length; i++) {
+//     var ME = MEs[i];
+//     var marker = new google.maps.Marker({
+//       position: {
+//         lat: ME[1],
+//         lng: ME[2]
+//       },
+//       icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+//       map: map,
+//       title: ME[0]
+//
+//     });
+//     addedMEs.push(marker);
+//   }
+//
+//   for (var i = 0; i < Concentras.length; i++) {
+//     var Concentra = Concentras[i];
+//     var marker = new google.maps.Marker({
+//       position: {
+//         lat: Concentra[1],
+//         lng: Concentra[2]
+//       },
+//       icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+//       map: map,
+//       title: Concentra[0]
+//     });
+//     addedConcentras.push(marker);
+//   }
+// }
