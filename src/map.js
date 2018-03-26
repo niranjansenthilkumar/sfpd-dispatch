@@ -37,7 +37,7 @@ function myMap() {
 
 function setMarkers(map) {
 
-  d3.csv("https://www.dropbox.com/s/91y64ts19f4ai5w/sfpd_dispatch_data_subset.csv?dl=0", function(data) {
+  d3.csv("/data/sfpd_dispatch_data_subset.csv", function(data) {
     data.forEach(function(d){
       var description = "<p>" + d.unit_type + "</p>";
       var infowindow = new google.maps.InfoWindow({
@@ -67,7 +67,7 @@ function setMarkers(map) {
 
 function setMarkersByTimeAndUnit(map, startTime, endTime, unit) {
 
-  d3.csv("https://www.dropbox.com/s/91y64ts19f4ai5w/sfpd_dispatch_data_subset.csv?dl=0", function(data) {
+  d3.csv("/data/sfpd_dispatch_data_subset.csv", function(data) {
     data.forEach(function(d){
       responseTime = d.received_timestamp.substring(10,13);
       responseTime = parseInt(responseTime);
@@ -100,7 +100,7 @@ function setMarkersByTimeAndUnit(map, startTime, endTime, unit) {
 
 function setMarkersByTime(map, startTime, endTime) {
 
-  d3.csv("https://www.dropbox.com/s/91y64ts19f4ai5w/sfpd_dispatch_data_subset.csv?dl=0", function(data) {
+  d3.csv("/data/sfpd_dispatch_data_subset.csv", function(data) {
     data.forEach(function(d){
       responseTime = d.received_timestamp.substring(10,13);
       responseTime = parseInt(responseTime);
@@ -134,7 +134,7 @@ function setMarkersByTime(map, startTime, endTime) {
 function setMarkersByUnit(map, unit, color) {
   ///data/sfpd_dispatch_data_subset.csv
   //https://www.dropbox.com/s/91y64ts19f4ai5w/sfpd_dispatch_data_subset.csv?dl=0
-  d3.csv("https://www.dropbox.com/s/91y64ts19f4ai5w/sfpd_dispatch_data_subset.csv?dl=0", function(data) {
+  d3.csv("/data/sfpd_dispatch_data_subset.csv", function(data) {
     data.forEach(function(d){
       responseTime = d.received_timestamp.substring(10,13);
       responseTime = parseInt(responseTime);
